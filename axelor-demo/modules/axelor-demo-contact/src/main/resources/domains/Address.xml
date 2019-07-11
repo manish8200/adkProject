@@ -1,0 +1,18 @@
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
+  http://axelor.com/xml/ns/domain-models/domain-models_5.1.xsd">
+ 
+ <module package="com.axelor.contact.db" name="contact"/>
+ 
+ <entity name="Address">
+ <many-to-one name="contact" ref="Contact"></many-to-one>
+ 
+ 	<string name="zip"/>
+ 	<string name="street"/>
+ 	<string name="area"/>
+ 	<string name="state"/>
+ 	<string name="country"/>
+ </entity>
+ 
+  </domain-models>

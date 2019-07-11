@@ -1,0 +1,39 @@
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models
+  http://axelor.com/xml/ns/domain-models/domain-models_5.1.xsd">
+
+<module name="contact" package="com.axelor.contact.db"/>
+
+<entity name = "Contact">
+
+<many-to-one name="title" ref="Title"></many-to-one>
+<string name = "firstname" />
+<string name = "lastname" />
+
+<string name ="fullName"  namecolumn="true" search="firstname,lastname">
+<![CDATA[
+if(firstname == null & lastname == null) {
+ 	return null;
+ 	}
+if(title == null) {
+	return firstname +"" + lastname;
+}
+return title.getName() + " " +firstname + " " +lastname;
+]]>
+	</string>
+	
+<date name="dateofbirth"/>
+
+<string name="email"/>
+<string name="phone"/>
+<string name="notes" title="About Me"></string>
+
+<one-to-many name="address" ref="Address"/>
+
+<finder-method name="frindByName" using="fullName"/>	
+
+ </entity>
+
+
+</domain-models>
